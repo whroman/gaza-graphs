@@ -9,7 +9,7 @@ $(function() {
             for ( i; i < sourcesLen; i++) {
                 var source = node.sources[i];
                 var sourceRef = node.parent.title + "-" + source;
-                html += "<a href='" + "#" + sourceRef + "' class='superscript'>[" + source + "] </a>";
+                html += "<a href='" + "#" + sourceRef + "' class='superscript text-green'>[" + source + "]</a>";
             }
 
             return html;
@@ -64,7 +64,7 @@ $(function() {
             .classed("faded", true)
             // Highlight only those that are an ancestor of the current segment
             .filter(function(node) {
-                var ancestors = D3Partitions.getNodeAncestors(node, d);
+                var ancestors = D3Partitions.getNodeAncestors(d, node);
                 return ancestors;
             })
             .classed("faded", false);
