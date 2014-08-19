@@ -14,22 +14,7 @@ $(function() {
 
             return html;
         },
-        renderPrimary: function(node) {
-            var html = "" +
-                "<div class='text-lg'>" + Templates.renderPrimaryTitle(node) + "</div>" +
-                "<div class='spacer-xs'></div>" +
-                "<div class='text-md'> " +
-                    node.value + " Total Palestinians killed" +
-                "</div>";
-
-            return html;
-        },
         renderSecondary: function(node) {
-            var html = "" +
-                "<div class='spacer-sm'></div>" +
-                "<div secondary class='text-sm'>" +
-                    "<div>Including <span>" + node.value + "</span> <span>" + node.title + "</span> deaths</div>" +
-                "</div>";   
             return html;
         },
         renderSource: function(source) {
@@ -84,19 +69,27 @@ $(function() {
     function InfoPanel ($wrapper) {
         var $panel = $wrapper.find("[info]"),
             $primary = $wrapper.find("[primary]"),
+            $primaryTitle = $primary.find("[title]"),
+            $primaryValue = $primary.find("[value]"),
             $secondary = $wrapper.find("[secondary]"),
+            $secondaryTitle = $secondary.find("[title]"),
+            $secondaryValue = $secondary.find("[value]"),
             classHidden = "hidden";
 
         function updatePrimary(node) {
-            var html = Templates.renderPrimary(node);
-            $primary.html(html);  
+            var titleHTML = Templates.renderPrimaryTitle(node);
+            $primaryTitle.html(titleHTML);  
+            $primaryValue.text(node.value);
         }
 
         function updateSecondary(node) {
-            var html = Templates.renderSecondary(node);
-            $secondary
-                .removeClass(classHidden)
-                .html(html);
+            $secondary.removeClass(classHidden)
+            $secondaryTitle.text(node.title)
+            $secondaryValue.text(node.value)
+        }
+
+        function updateTertiary(node) {
+
         }
         
         function update(d) {
@@ -106,6 +99,10 @@ $(function() {
             } else if (d.depth === 2) {
                 updatePrimary(d.parent);
                 updateSecondary(d);           
+            } else if (d.depth === 3 ) {
+                console.log(d.parent)
+                updatePrimary(d.parent.parent)
+                updateSecondary(d);
             }
         }
 
@@ -119,7 +116,8 @@ $(function() {
     }
 
     var D3Partitions = function() {
-        var width = 650,
+        var graphs = {},
+            width = 650,
             height = 650,
             radius = Math.min(width, height) / 2,
             svgCenter = "translate(" + width / 2 + "," + height / 2 + ")";
@@ -133,11 +131,13 @@ $(function() {
             .innerRadius(function(d) { return Math.sqrt(d.y); })
             .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
 
-        function jsonRequestCB(error, json, graph) {
+        function jsonRequestCB(error, json) {
+            var key;
             if (!error) {
-                renderGraph(json, graph);
-                attachGraphEvents(graph);
-                Templates.renderSourcesPanel(graph.$sources, json);                
+                key = json.title + ".json"
+                renderGraph(json, graphs[key]);
+                attachGraphEvents(graphs[key]);
+                Templates.renderSourcesPanel(graphs[key].$sources, json);                
             }
         }
 
@@ -176,21 +176,27 @@ $(function() {
 
             for ( i; i < elementsLen; i++ ) {
                 var element = d3.select(elements[i]);
-                var graph = {
-                    wrapper: element,
-                    jsonPath: element.attr("data-source"),
-                    svg: element.select("[graph]")
+                var jsonPath = element.attr("data-source");
+                var svg = element.select("[graph]")
                         .append("svg")
                         .attr("width", width)
                         .attr("height", height)
                         .append("g")
-                        .attr("transform", svgCenter),
-                    $sources: $(elements[i]).find("[sources]"),
+                        .attr("transform", svgCenter);
+                var $sources = $("[data-source='" + jsonPath + "']")
+
+                var graph = {
+                    wrapper: element,
+                    jsonPath: jsonPath,
+                    svg: svg,
+                    $sources: $sources,
                     info: new InfoPanel($(elements[i]))
                 };
 
+                graphs[jsonPath] = graph;
+
                 d3.json(graph.jsonPath, function(error, json) {
-                    D3Partitions.jsonRequestCB(error, json, graph);
+                    D3Partitions.jsonRequestCB(error, json);
                 });
             }
         }

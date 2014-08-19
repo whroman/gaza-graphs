@@ -1,0 +1,30 @@
+{
+    "title": "palestinianWounded",
+    "sources": [
+        {
+            "link": "http://www.albawaba.com/news/gaza-death-toll-2016-597208",
+            "lastUpdated": "08/19/2014"
+        }
+    ],
+    "children": [
+        {
+            "title": "Gaza Health Ministry",
+            "value": 10193,
+            "sources": [1],
+            "children": [
+                {
+                    "title": "children",
+                    "value": 3084
+                },
+                {
+                    "title": "elderly",
+                    "value": 368
+                },
+                {
+                    "title": "unidentified",
+                    "value": 6741
+                }
+            ]
+        }
+    ]
+}

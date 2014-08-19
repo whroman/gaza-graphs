@@ -1,0 +1,26 @@
+{
+    "title": "israeliCasualties",
+    "sources": [
+        {
+            "link": "http://online.wsj.com/articles/israel-hamas-trade-fire-as-gaza-death-toll-mounts-1407579399",
+            "lastUpdated": "08/19/2014"                    
+        }
+    ],
+    "children": [
+        {
+            "title": "Israel Defense Forces",
+            "value": 67,
+            "sources": [1],
+            "children": [
+                {
+                    "title": "combatant",
+                    "value": 64
+                },
+                {
+                    "title": "civilian",
+                    "value": 3
+                }
+            ]
+        }
+    ]
+}

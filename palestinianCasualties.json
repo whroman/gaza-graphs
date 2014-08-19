@@ -2,20 +2,20 @@
     "title": "palestinianCasualties",
     "sources": [
         {
-        "link": "http://english.alarabiya.net/en/News/middle-east/2014/08/18/Norway-donor-conference-in-Cairo-once-lasting-Gaza-truce.html",
-        "lastUpdated": "08/18/2014"
+            "link": "http://english.alarabiya.net/en/News/middle-east/2014/08/18/Norway-donor-conference-in-Cairo-once-lasting-Gaza-truce.html",
+            "lastUpdated": "08/18/2014"
         },
         {
-        "link": "http://www.pchrgaza.org/portal/en/index.php?option=com_content&view=article&id=10491",
-        "lastUpdated": "08/18/2014"
+            "link": "http://www.pchrgaza.org/portal/en/index.php?option=com_content&view=article&id=10491",
+            "lastUpdated": "08/18/2014"
         },
         { 
-        "link": "http://www.ochaopt.org/documents/ocha_opt_sitrep_18_08_2014.pdf",
-        "lastUpdated": "08/18/2014"
+            "link": "http://www.ochaopt.org/documents/ocha_opt_sitrep_18_08_2014.pdf",
+            "lastUpdated": "08/18/2014"
         },
         {
-        "link": "http://www.terrorism-info.org.il/Data/articles/Art_20696/E_138_14_1920269015.pdf",
-        "lastUpdated": "08/18/2014"
+            "link": "http://www.terrorism-info.org.il/Data/articles/Art_20696/E_138_14_1920269015.pdf",
+            "lastUpdated": "08/18/2014"
         },
         {
             "link": "http://www.ynetnews.com/articles/0,7340,L-4555334,00.html",
@@ -48,13 +48,14 @@
             "sources": [2],
             "children": [
                 {
-                    "title": "unidentified",
-                    "value": 338
-                },
-                {
                     "title": "civilian",
                     "value": 1670
+                },
+                {
+                    "title": "unidentified",
+                    "value": 338
                 }
+
             ]
         },
         {
@@ -105,7 +106,7 @@
                     "value": 900
                 },
                 {
-                    "title": "undisclosed",
+                    "title": "unidentified",
                     "value": 868
                 }
             ]
@@ -122,10 +123,6 @@
                 {
                     "title": "combatant",
                     "value": 276
-                },
-                {
-                    "title": "undisclosed",
-                    "value": 0
                 }
             ]
         }

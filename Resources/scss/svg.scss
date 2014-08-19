@@ -7,13 +7,17 @@ path {
 }
 
 .combatant {
-    fill: $green;
-}
-
-.unidentified {
     fill: $blue;
 }
 
-.undisclosed {
+.unidentified {
     fill: $yellow;
+}
+
+.children {
+    fill: $red;
+}
+
+.elderly {
+    fill: $blue;
 }
