@@ -143,7 +143,7 @@ $(function() {
         for ( i; i < sourcesLen; i++) {
             var source = sources[i],
                 sourceRef = "<span>[" + (i + 1) + "] </span>",
-                lastUpdated = "<span> - Last Updated " + source.lastUpdated + "</span",
+                lastUpdated = "<span> - Retrieved " + source.lastUpdated + "</span",
                 link = "<div><div class='spacer-xs'></div><a href='" + source.link + "'>" + source.link + "</a></div>";
 
             $panel.append("<li class='text-xs'>" + sourceRef + lastUpdated + link + "<div class='spacer-md'></div></li>");
