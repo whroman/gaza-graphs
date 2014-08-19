@@ -1,14 +1,4 @@
 $(function() {
-    var $window = $(window),
-        sources = [],
-        width = 600,
-        height = 600,
-        radius = Math.min(width, height) / 2,
-        paths,
-        svg,
-        partition,
-        arc;
-
     var info = {
         $panel: $("#info"),
         $secondary: $("#secondary"),
@@ -39,96 +29,103 @@ $(function() {
         }
     };
 
-    var events = {
-        pathMouseover: function(d) {
-            var sequenceArray = getAncestors(d);
+    var d3ui = {
+        onPathMouseover: function(d, paths) {
 
             paths
             // Fade all fill colors
             .classed("faded", true)
             // Highlight only those that are an ancestor of the current segment
             .filter(function(node) {
-                return (sequenceArray.indexOf(node) >= 0);
+                var ancestors = d3ui.getAncestors(node, d);
+                return ancestors;
             })
             .classed("faded", false);
 
             info.update(d);
-        }
+        },
+        getAncestors: function(node, currentNode) {
+            var ancestors = [];
+            var whileNode = node;
+            while (whileNode.parent) {
+                ancestors.unshift(whileNode);
+                whileNode = whileNode.parent;
+            }
+            return (ancestors.indexOf(currentNode) >= 0);
+        },
+
     };
 
-    $window.resize(function() {
-        svg.attr("transform", centerSVG);
-    });
 
-    renderD3Partitions();
 
-    function renderD3Partitions() {
-        var elements = $("[d3-partition-graph]"),
-            i = 0,
-            elementsLen = elements.length;
 
-        for ( i; i < elementsLen; i++ ) {
-            var element = d3.select(elements[i]),
-                jsonToLoad = element.attr("data-source");
+    var d3Partitions = function() {
+        var width = 600,
+            height = 600,
+            radius = Math.min(width, height) / 2,
+            svgTranslateToCenter = "translate(" + width / 2 + "," + height / 2 + ")";
 
-            svg = element.append("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .append("g")
-                .attr("transform", centerSVG);
+        var partition = d3.layout.partition()
+            .size([2 * Math.PI, radius * radius]);
 
-            partition = d3.layout.partition()
-                .sort(null)
-                .size([2 * Math.PI, radius * radius])
-                .value(function(d) { return d.value; })
-                .children(function(d) {return d.figures; });
+        var arc = d3.svg.arc()
+            .startAngle(function(d) { return d.x; })
+            .endAngle(function(d) { return d.x + d.dx; })
+            .innerRadius(function(d) { return Math.sqrt(d.y); })
+            .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
 
-            arc = d3.svg.arc()
-                .startAngle(function(d) { return d.x; })
-                .endAngle(function(d) { return d.x + d.dx; })
-                .innerRadius(function(d) { return Math.sqrt(d.y); })
-                .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
+        function jsonRequestCB(error, json) {
+            var paths = svg.datum(json).selectAll("path")
+                .data(d3Partitions.partition.nodes)
+                .enter()
+                .append("path")
+                .attr("display", function(d) {
+                    return d.depth === 0 ? "none" : null; // hide inner ring
+                })
+                .attr("class", function(d) { 
+                    return d.title; 
+                })
+                .attr("d", d3Partitions.arc)
+                .on("mouseover", function(d) {
+                    d3ui.onPathMouseover(d, paths);
+                });
 
-            d3.json(jsonToLoad, onLoadSuccess);
+            renderSourcesPanel(".sources[for='casualties']", json.sources);
         }
-    }
 
-    function centerSVG() {
-        var translate =  "translate(" + width / 2 + "," + height / 2 + ")";
-        return translate;
-    }
+        function render() {
+            var elements = $("[d3-partition-graph]"),
+                i = 0,
+                elementsLen = elements.length;
 
-    function getAncestors(node) {
-        var path = [];
-        var current = node;
-        while (current.parent) {
-            path.unshift(current);
-            current = current.parent;
+            for ( i; i < elementsLen; i++ ) {
+                var element = d3.select(elements[i]),
+                    jsonPath = element.attr("data-source");
+
+                svg = element.append("svg")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .append("g")
+                    .attr("transform", d3Partitions.centerSVG);
+
+
+                d3.json(jsonPath, d3Partitions.jsonRequestCB);
+            }
         }
-        return path;
-    }
 
-    function onLoadSuccess(error, data) {
-        var nodeIndex = 1;
-        paths = svg.datum(data).selectAll("path")
-            .data(partition.nodes)
-            .enter()
-            .append("path")
-            .attr("display", function(d) {
-                return d.depth === 0 ? "none" : null; // hide inner ring
-            })
-            .attr("class", function(d) { 
-                return d.title.toLowerCase(); 
-            })
-            .attr("d", arc)
-            .style("z-index", function(d) {
-                return d.depth;
-            })
-            .style("stroke", "#fff")
-            .on("mouseover", events.pathMouseover);
+        function centerSVG() {
+            var translate =  "translate(" + width / 2 + "," + height / 2 + ")";
+            return translate;
+        }
 
-        renderSourcesPanel(".sources[for='casualties']", data.sources);
-    }
+        return {
+            arc: arc,
+            partition: partition,
+            render: render,
+            centerSVG: centerSVG,
+            jsonRequestCB: jsonRequestCB
+        };
+    }();
 
     function renderSourcesPanel(sel, sources) {
         var $panel = $(sel),
@@ -144,5 +141,7 @@ $(function() {
             $panel.append("<li class='text-xs'>" + sourceRef + lastUpdated + link + "<div class='spacer-md'></div></li>");
         }
     }
+
+    d3Partitions.render();
 
 });

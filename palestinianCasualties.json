@@ -30,12 +30,12 @@
         }
     ],
     "title": "Palestinian Casualties",
-    "figures": [
+    "children": [
         {
             "title": "Gaza Health Ministry",
             "value": 2016,
             "sources": "[1]",
-            "figures": [
+            "children": [
                 {
                     "title": "unidentified",
                     "value": 2016
@@ -46,7 +46,7 @@
             "title": "Palestinian Centre for Human Rights",
             "value": 2008,
             "sources": "[2]",
-            "figures": [
+            "children": [
                 {
                     "title": "unidentified",
                     "value": 338
@@ -61,7 +61,7 @@
             "title": "United Nations OCHA",
             "value": 1976,
             "sources": "[3]",
-            "figures": [
+            "children": [
                 {
                     "title": "civilian",
                     "value": 1417
@@ -80,7 +80,7 @@
             "title": "Meir Amit Intelligence and Terrorism Information Center",
             "value": 1552,
             "sources": "[4]",
-            "figures": [
+            "children": [
                 {
                     "title": "civilian",
                     "value": 480
@@ -99,7 +99,7 @@
             "title": "Israel Defense Forces",
             "value": 1768,
             "sources": "[5] [6]",
-            "figures": [
+            "children": [
                 {
                     "title": "combatant",
                     "value": 900
@@ -114,7 +114,7 @@
             "title": "Al Mezan Center for Human Rights",
             "value": 1927,
             "sources": "[7]",
-            "figures": [
+            "children": [
                 {
                     "title": "civilian",
                     "value": 1651
