@@ -1,0 +1,153 @@
+{
+    "title": "Casualties",
+    "figures": [
+        {
+            "title": "Gaza Health Ministry",
+            "value": 1911,
+            "sources": [
+                {
+                    "link": "http://english.farsnews.com/newstext.aspx?nn=13930512000226",
+                    "lastUpdated": "08/09/2014"
+                }
+            ],
+            "figures": [
+                {
+                    "title": "undisclosed",
+                    "value": 381
+                },
+                {
+                    "title": "civilian",
+                    "value": 1530
+                }
+
+            ]
+        },
+        {
+            "title": "Palestinian Centre for Human Rights",
+            "value": 2008,
+            "sources": [
+                {
+                   "link": "http://www.pchrgaza.org/portal/en/index.php?option=com_content&view=article&id=10579:ongoing-israeli-offensive-on-gaza6-palestinians-including-4-civilian-killed-and-85-others-including-17-children-and-11-women-wounded-14-houses-and-one-mosque-destroyed&catid=145:in-focus",
+                    "lastUpdated": "08/11/2014"
+                }
+            
+            ],
+            "figures": [
+                {
+                    "title": "undisclosed",
+                    "value": 338
+                },
+                {
+                    "title": "civilian",
+                    "value": 1670
+                }
+            ]
+        },
+        {
+            "title": "United Nations OCHA",
+            "value": 1948,
+            "sources": [
+                { 
+                    "link": "http://www.ochaopt.org/documents/ocha_opt_sitrep_10_08_2014.pdf",
+                    "lastUpdated": "08/09/2014"
+                }
+            ],
+            "figures": [
+                {
+                    "title": "civilian",
+                    "value": 1402
+                },
+                {
+                    "title": "combatant",
+                    "value": 226
+                },
+                {
+                    "title": "unidentified",
+                    "value": 320
+                },
+                {
+                    "title": "undisclosed",
+                    "value": 0
+                }
+            ]
+        },
+        {
+            "title": "Intelligence and Terrorism Information Center",
+            "value": 1552,
+            "sources": [
+                {
+                    "link": "http://www.terrorism-info.org.il/Data/articles/Art_20696/E_138_14_1920269015.pdf",
+                    "lastUpdated": "08/05/2014"
+                }
+            ],
+            "figures": [
+                {
+                    "title": "civilian",
+                    "value": 480
+                },
+                {
+                    "title": "combatant",
+                    "value": 467
+                },
+                {
+                    "title": "unidentified",
+                    "value": 605
+                },
+                {
+                    "title": "undisclosed",
+                    "value": 0
+                }
+            ]
+        },
+        {
+            "title": "Israel Defense Forces",
+            "value": 1768,
+            "sources": [
+                {
+                    "link": "http://www.ynetnews.com/articles/0,7340,L-4555334,00.html",
+                    "lastUpdated": "08/09/2014"
+                },
+                {
+                    "link": "http://www.timesofisrael.com/900-operatives-killed-over-gaza-campaign-idf-says/",
+                    "lastUpdated": "08/09/2014"                    
+                }
+                
+            ],
+            "figures": [
+                {
+                    "title": "combatant",
+                    "value": 900
+                },
+                {
+                    "title": "undisclosed",
+                    "value": 868
+                }
+            ]
+        },
+        {
+            "title": "Al Mezan Center for Human Rights",
+            "value": 1927,
+            "sources": [
+                {
+                    "link": "http://www.mezan.org/en/details.php?id=19311&ddname=IOF&id2=9&id_dept=9&p=center",
+                    "lastUpdated": "08/09/2014"                    
+                }
+                
+            ],
+            "figures": [
+                {
+                    "title": "civilian",
+                    "value": 1651
+                },
+                {
+                    "title": "combatant",
+                    "value": 276
+                },
+                {
+                    "title": "undisclosed",
+                    "value": 0
+                }
+            ]
+        }
+    ]
+}

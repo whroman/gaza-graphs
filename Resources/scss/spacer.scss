@@ -1,0 +1,41 @@
+[class*="-spacer-"] {
+    margin: 0;
+
+    + * {
+        clear: both;
+    }
+}
+
+$xs: 5px;
+$sm: $xs * 2;
+$md: $sm * 2;
+$lg: $md * 2;
+$xl: $md * 3;
+
+.spacer-none {
+    height: 0;
+
+    + * {
+        clear: none;
+    }
+}
+
+.spacer-xs {
+    height: $xs;
+}
+
+.spacer-sm {
+    height: $sm;
+}
+
+.spacer-md {
+    height: $md;
+}
+
+.spacer-lg {
+    height: $lg;
+}
+
+.spacer-xl {
+    height: $xl;
+}

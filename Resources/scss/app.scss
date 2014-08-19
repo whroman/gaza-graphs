@@ -1,1 +1,50 @@
+@import "vars";
 @import "reset";
+@import "spacer";
+@import "svg-fill";
+@import "text";
+
+.body-column-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    overflow: hidden;
+}
+
+.body-column {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faded {
+    opacity: 0.3;
+}
+
+svg {
+    overflow: visible;
+    display: block;
+    margin: 0 auto;
+}
+
+#info {
+    position: absolute;
+    width: 280px;
+    margin-left: -140px;
+    left: 50%;
+    margin-top: 210px;
+    z-index: -1;
+}
+
+.hidden {
+    display: none;
+}
+
+.superscript {
+    font-size: 13px;
+    vertical-align: super;
+    margin-left: 5px;
+}
+
+a:hover {
+    color: $red;
+}
