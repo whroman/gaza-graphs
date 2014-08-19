@@ -1,4 +1,5 @@
 {
+    "title": "palestinianCasualties",
     "sources": [
         {
         "link": "http://english.alarabiya.net/en/News/middle-east/2014/08/18/Norway-donor-conference-in-Cairo-once-lasting-Gaza-truce.html",
@@ -29,7 +30,6 @@
             "lastUpdated": "08/18/2014"                    
         }
     ],
-    "title": "Palestinian Casualties",
     "children": [
         {
             "title": "Gaza Health Ministry",

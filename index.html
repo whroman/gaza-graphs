@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Discrepancies In Palestinian Casualty Reports </title>
+    <title>Discrepancies in Palestinian Casualty Reports </title>
     <link rel="stylesheet" href="Resources/build/build.css">
     <script type="text/javascript" src="Resources/build/build.js "></script>
 </head>
@@ -11,29 +11,20 @@
 
     <div class="body-column">
         <div>
-            <h1 class="text-center text-xl">Discrepancies In Palestinian Casualty Reports in the 2014 Gaza Conflict</h1>
+            <h1 class="text-center text-xl">Discrepancies in Palestinian Casualty Reports in the 2014 Gaza Conflict</h1>
 
         </div>
     </div>
 
     <div class="spacer-sm"></div>
 
-    <div class="body-column text-center">
-        <div id="info" class="hidden">
-            <div id="primary">
-                <div id="org" class="text-lg"></div>
-                <div class="spacer-xs"></div>
-                <div class="text-md"><span id="total-dead"></span> Total Palestinians killed</div>
-            </div>
-
-            <div class="spacer-xs"></div>
-
-            <div id="secondary" class="text-sm">
-                <div>Including <span id="type-dead"></span> <span id="type"></span> deaths</div>
-            </div>            
+    <div class="body-column text-center" d3-partition-graph data-source="palestinianCasualties.json">
+        <div info>
+            <div primary></div>
+            <div secondary></div>    
         </div>
 
-        <div d3-partition-graph data-source="palestinianCasualties.json"></div>
+        <div graph></div>
 
         <div class="spacer-xl"></div>
 
@@ -41,7 +32,7 @@
 
         <div class="spacer-md"></div>
 
-        <ul class="sources" for="casualties"></ul>
+        <ul sources></ul>
 
         <div class="spacer-md"></div>
 
