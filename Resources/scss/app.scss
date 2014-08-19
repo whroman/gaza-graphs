@@ -28,11 +28,11 @@ svg {
 
 [info] {
     position: absolute;
-    width: 280px;
-    margin-left: -140px;
+    width: 300px;
+    margin-left: -150px;
     left: 50%;
-    margin-top: 210px;
-    z-index: -1;
+    margin-top: 240px;
+    z-index: 1;
 }
 
 .hidden {
@@ -46,5 +46,5 @@ svg {
 }
 
 a:hover {
-    color: $red;
+    @extend .text-red;
 }

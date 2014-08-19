@@ -2,47 +2,58 @@ $(function() {
 
     var Templates = {
         renderPrimaryTitle: function(node) {
-            var html = node.title + "<span class='superscript'>" + node.sources + "</span>";
+            var i = 0;
+            var sourcesLen = node.sources.length;
+            var html = node.title;
+
+            for ( i; i < sourcesLen; i++) {
+                var source = node.sources[i];
+                var sourceRef = node.parent.title + "-" + source;
+                html += "<a href='" + "#" + sourceRef + "' class='superscript'>" + source + "</a>";
+            }
+
             return html;
         },
         renderPrimary: function(node) {
             var html = "" +
-            "<div primary>" +
                 "<div class='text-lg'>" + Templates.renderPrimaryTitle(node) + "</div>" +
                 "<div class='spacer-xs'></div>" +
                 "<div class='text-md'> " +
                     node.value + " Total Palestinians killed" +
-                "</div>" +
-            "</div>";
+                "</div>";
 
             return html;
         },
         renderSecondary: function(node) {
             var html = "" +
+                "<div class='spacer-sm'></div>" +
                 "<div secondary class='text-sm'>" +
                     "<div>Including <span>" + node.value + "</span> <span>" + node.title + "</span> deaths</div>" +
                 "</div>";   
             return html;
         },
         renderSource: function(source) {
-            var sourceRef = "<span>[" + (source.i + 1) + "] </span>";
+            var index = source.i + 1;
+            var sourceRef = source.title + "-" + index; 
             var lastUpdated = "<span> - Retrieved " + source.lastUpdated + "</span";
             var link = "<div><div class='spacer-xs'></div><a href='" + source.link + "'>" + source.link + "</a></div>";
-            var html = "<li class='text-xs'>" + sourceRef + lastUpdated + link + "<div class='spacer-md'></div></li>";
+            var html = "<li id='" + sourceRef + "'class='text-xs source'>" + "<span>[" + index + "]</span>" + lastUpdated + link + "<div class='spacer-md'></div></li>";
 
             return html;
         },
-        renderSourcesPanel: function($panel, sources) {
+        renderSourcesPanel: function($panel, json) {
             var i = 0,
-                sourcesLen = sources.length;
+                sourcesLen = json.sources.length;
 
             for ( i; i < sourcesLen; i++) {
-                var source = sources[i];
+                var source = json.sources[i];
                 source.i = i;
+                source.title = json.title;
                 var html = Templates.renderSource(source);
 
                 $panel.append(html);
             }
+            events.hightlightSourceByHash();
         }
     };
 
@@ -59,6 +70,14 @@ $(function() {
             .classed("faded", false);
 
             graph.info.update(d);
+        },
+        hightlightSourceByHash: function() {
+            var hash = window.location.hash;
+            var hightlightClass = "text-green";
+            $(".source").removeClass(hightlightClass);
+            if (hash) {
+                $(window.location.hash).addClass(hightlightClass);
+            }
         }
     };
 
@@ -67,7 +86,6 @@ $(function() {
             $primary = $wrapper.find("[primary]"),
             $secondary = $wrapper.find("[secondary]"),
             classHidden = "hidden";
-
 
         function updatePrimary(node) {
             var html = Templates.renderPrimary(node);
@@ -101,8 +119,8 @@ $(function() {
     }
 
     var D3Partitions = function() {
-        var width = 600,
-            height = 600,
+        var width = 650,
+            height = 650,
             radius = Math.min(width, height) / 2,
             svgCenter = "translate(" + width / 2 + "," + height / 2 + ")";
 
@@ -118,7 +136,8 @@ $(function() {
         function jsonRequestCB(error, json, graph) {
             if (!error) {
                 renderGraph(json, graph);
-                Templates.renderSourcesPanel(graph.$sources, json.sources);                
+                attachGraphEvents(graph);
+                Templates.renderSourcesPanel(graph.$sources, json);                
             }
         }
 
@@ -133,10 +152,13 @@ $(function() {
                 .attr("class", function(d) { 
                     return d.title; 
                 })
-                .attr("d", D3Partitions.arc)
-                .on("mouseover", function(d) {
-                    events.onPathMouseover(d, graph);
-                });    
+                .attr("d", D3Partitions.arc);  
+        }
+
+        function attachGraphEvents(graph) {
+            graph.paths.on("mouseover", function(d) {
+                events.onPathMouseover(d, graph);
+            });  
         }
 
         function render() {
@@ -186,4 +208,5 @@ $(function() {
 
     D3Partitions.render();
 
+    $(window).on("hashchange", events.hightlightSourceByHash);
 });

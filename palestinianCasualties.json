@@ -34,7 +34,7 @@
         {
             "title": "Gaza Health Ministry",
             "value": 2016,
-            "sources": "[1]",
+            "sources": [1],
             "children": [
                 {
                     "title": "unidentified",
@@ -45,7 +45,7 @@
         {
             "title": "Palestinian Centre for Human Rights",
             "value": 2008,
-            "sources": "[2]",
+            "sources": [2],
             "children": [
                 {
                     "title": "unidentified",
@@ -60,7 +60,7 @@
         {
             "title": "United Nations OCHA",
             "value": 1976,
-            "sources": "[3]",
+            "sources": [3],
             "children": [
                 {
                     "title": "civilian",
@@ -77,9 +77,9 @@
             ]
         },
         {
-            "title": "Meir Amit Intelligence and Terrorism Information Center",
+            "title": "Intelligence and Terrorism Information Center",
             "value": 1552,
-            "sources": "[4]",
+            "sources": [4],
             "children": [
                 {
                     "title": "civilian",
@@ -98,7 +98,7 @@
         {
             "title": "Israel Defense Forces",
             "value": 1768,
-            "sources": "[5] [6]",
+            "sources": [5, 6],
             "children": [
                 {
                     "title": "combatant",
@@ -113,7 +113,7 @@
         {
             "title": "Al Mezan Center for Human Rights",
             "value": 1927,
-            "sources": "[7]",
+            "sources": [7],
             "children": [
                 {
                     "title": "civilian",
