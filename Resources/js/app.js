@@ -63,25 +63,34 @@ $(function() {
     renderD3Partitions();
 
     function renderD3Partitions() {
-        svg = d3.select("#casualties").append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g")
-            .attr("transform", centerSVG);
+        var elements = $("[d3-partition-graph]"),
+            i = 0,
+            elementsLen = elements.length;
 
-        partition = d3.layout.partition()
-            .sort(null)
-            .size([2 * Math.PI, radius * radius])
-            .value(function(d) { return d.value; })
-            .children(function(d) {return d.figures; });
+        for ( i; i < elementsLen; i++ ) {
+            var element = d3.select(elements[i]),
+                jsonToLoad = element.attr("data-source");
 
-        arc = d3.svg.arc()
-            .startAngle(function(d) { return d.x; })
-            .endAngle(function(d) { return d.x + d.dx; })
-            .innerRadius(function(d) { return Math.sqrt(d.y); })
-            .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
+            svg = element.append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", centerSVG);
 
-        d3.json("data.json", onLoadSuccess);
+            partition = d3.layout.partition()
+                .sort(null)
+                .size([2 * Math.PI, radius * radius])
+                .value(function(d) { return d.value; })
+                .children(function(d) {return d.figures; });
+
+            arc = d3.svg.arc()
+                .startAngle(function(d) { return d.x; })
+                .endAngle(function(d) { return d.x + d.dx; })
+                .innerRadius(function(d) { return Math.sqrt(d.y); })
+                .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
+
+            d3.json(jsonToLoad, onLoadSuccess);
+        }
     }
 
     function centerSVG() {
