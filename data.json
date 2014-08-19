@@ -1,40 +1,54 @@
 {
-    "title": "Casualties",
+    "sources": [
+        {
+        "link": "http://english.alarabiya.net/en/News/middle-east/2014/08/18/Norway-donor-conference-in-Cairo-once-lasting-Gaza-truce.html",
+        "lastUpdated": "08/18/2014"
+        },
+        {
+        "link": "http://www.pchrgaza.org/portal/en/index.php?option=com_content&view=article&id=10491",
+        "lastUpdated": "08/18/2014"
+        },
+        { 
+        "link": "http://www.ochaopt.org/documents/ocha_opt_sitrep_18_08_2014.pdf",
+        "lastUpdated": "08/18/2014"
+        },
+        {
+        "link": "http://www.terrorism-info.org.il/Data/articles/Art_20696/E_138_14_1920269015.pdf",
+        "lastUpdated": "08/18/2014"
+        },
+        {
+            "link": "http://www.ynetnews.com/articles/0,7340,L-4555334,00.html",
+            "lastUpdated": "08/18/2014"
+        },
+        {
+            "link": "http://www.timesofisrael.com/900-operatives-killed-over-gaza-campaign-idf-says/",
+            "lastUpdated": "08/18/2014"                    
+        },
+        {
+            "link": "http://www.mezan.org/en/details.php?id=19311&ddname=IOF&id2=9&id_dept=9&p=center",
+            "lastUpdated": "08/18/2014"                    
+        }
+    ],
+    "title": "Palestinian Casualties",
     "figures": [
         {
             "title": "Gaza Health Ministry",
-            "value": 1911,
-            "sources": [
-                {
-                    "link": "http://english.farsnews.com/newstext.aspx?nn=13930512000226",
-                    "lastUpdated": "08/18/2014"
-                }
-            ],
+            "value": 2016,
+            "sources": "[1]",
             "figures": [
                 {
-                    "title": "undisclosed",
-                    "value": 381
-                },
-                {
-                    "title": "civilian",
-                    "value": 1530
+                    "title": "unidentified",
+                    "value": 2016
                 }
-
             ]
         },
         {
             "title": "Palestinian Centre for Human Rights",
             "value": 2008,
-            "sources": [
-                {
-                   "link": "http://www.pchrgaza.org/portal/en/index.php?option=com_content&view=article&id=10579:ongoing-israeli-offensive-on-gaza6-palestinians-including-4-civilian-killed-and-85-others-including-17-children-and-11-women-wounded-14-houses-and-one-mosque-destroyed&catid=145:in-focus",
-                    "lastUpdated": "08/18/2014"
-                }
-            
-            ],
+            "sources": "[2]",
             "figures": [
                 {
-                    "title": "undisclosed",
+                    "title": "unidentified",
                     "value": 338
                 },
                 {
@@ -45,41 +59,27 @@
         },
         {
             "title": "United Nations OCHA",
-            "value": 1948,
-            "sources": [
-                { 
-                    "link": "http://www.ochaopt.org/documents/ocha_opt_sitrep_10_08_2014.pdf",
-                    "lastUpdated": "08/18/2014"
-                }
-            ],
+            "value": 1976,
+            "sources": "[3]",
             "figures": [
                 {
                     "title": "civilian",
-                    "value": 1402
+                    "value": 1417
                 },
                 {
                     "title": "combatant",
-                    "value": 226
+                    "value": 230
                 },
                 {
                     "title": "unidentified",
-                    "value": 320
-                },
-                {
-                    "title": "undisclosed",
-                    "value": 0
+                    "value": 329
                 }
             ]
         },
         {
-            "title": "Intelligence and Terrorism Information Center",
+            "title": "Meir Amit Intelligence and Terrorism Information Center",
             "value": 1552,
-            "sources": [
-                {
-                    "link": "http://www.terrorism-info.org.il/Data/articles/Art_20696/E_138_14_1920269015.pdf",
-                    "lastUpdated": "08/18/2014"
-                }
-            ],
+            "sources": "[4]",
             "figures": [
                 {
                     "title": "civilian",
@@ -92,27 +92,13 @@
                 {
                     "title": "unidentified",
                     "value": 605
-                },
-                {
-                    "title": "undisclosed",
-                    "value": 0
                 }
             ]
         },
         {
             "title": "Israel Defense Forces",
             "value": 1768,
-            "sources": [
-                {
-                    "link": "http://www.ynetnews.com/articles/0,7340,L-4555334,00.html",
-                    "lastUpdated": "08/18/2014"
-                },
-                {
-                    "link": "http://www.timesofisrael.com/900-operatives-killed-over-gaza-campaign-idf-says/",
-                    "lastUpdated": "08/18/2014"                    
-                }
-                
-            ],
+            "sources": "[5] [6]",
             "figures": [
                 {
                     "title": "combatant",
@@ -127,13 +113,7 @@
         {
             "title": "Al Mezan Center for Human Rights",
             "value": 1927,
-            "sources": [
-                {
-                    "link": "http://www.mezan.org/en/details.php?id=19311&ddname=IOF&id2=9&id_dept=9&p=center",
-                    "lastUpdated": "08/18/2014"                    
-                }
-                
-            ],
+            "sources": "[7]",
             "figures": [
                 {
                     "title": "civilian",

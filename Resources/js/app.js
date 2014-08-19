@@ -18,7 +18,7 @@ $(function() {
         $typeDead: $("#type-dead"),
         classHidden: "hidden",
         updatePrimary: function(node) {
-            info.$org.html(node.title + "<span class='superscript'>[" + node.sources + "]</span>");
+            info.$org.html(node.title + "<span class='superscript'>" + node.sources + "</span>");
             info.$totalDead.text(node.value);   
         },
         update: function(d) {
@@ -116,26 +116,12 @@ $(function() {
                 return d.depth;
             })
             .style("stroke", "#fff")
-            .datum(function(d) {
-                var sourceRefs = [];
-                var i = 0;
-                var sourcesLen;
-                if (d.depth === 1) {
-                    sourcesLen = d.sources.length;
-                    for ( i; i < sourcesLen; i++ ) {
-                        sourceRefs.push(nodeIndex++);
-                        sources.push(d.sources[i]);
-                    }
-                    d.sources = sourceRefs;
-                }
-                return d;
-            })
             .on("mouseover", events.pathMouseover);
 
-        renderSourcesPanel(".sources[for='casualties']");
+        renderSourcesPanel(".sources[for='casualties']", data.sources);
     }
 
-    function renderSourcesPanel(sel) {
+    function renderSourcesPanel(sel, sources) {
         var $panel = $(sel),
             i = 0,
             sourcesLen = sources.length;
