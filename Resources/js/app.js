@@ -9,7 +9,7 @@ $(function() {
             for ( i; i < sourcesLen; i++) {
                 var source = node.sources[i];
                 var sourceRef = node.parent.title + "-" + source;
-                html += "<a href='" + "#" + sourceRef + "' class='superscript'>" + source + "</a>";
+                html += "<a href='" + "#" + sourceRef + "' class='superscript'>[" + source + "] </a>";
             }
 
             return html;
