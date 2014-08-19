@@ -145,14 +145,22 @@ $(function() {
             graph.paths = graph.svg.datum(json).selectAll("path")
                 .data(D3Partitions.partition.nodes)
                 .enter()
-                .append("path")
+                .append("path");
+
+            graph.paths
                 .attr("display", function(d) {
                     return d.depth === 0 ? "none" : null; // hide inner ring
                 })
                 .attr("class", function(d) { 
-                    return d.title; 
+                    if (d.depth > 1) {
+                        return d.title + " depth-" + d.depth; 
+                    }
                 })
-                .attr("d", D3Partitions.arc);  
+                .attr("d", D3Partitions.arc);
+
+            // Load graph with one selected <path>
+            var data = d3.select("path.depth-2")[0][0].__data__;
+            events.onPathMouseover(data, graph);
         }
 
         function attachGraphEvents(graph) {
@@ -207,6 +215,7 @@ $(function() {
     }();
 
     D3Partitions.render();
+
 
     $(window).on("hashchange", events.hightlightSourceByHash);
 });
