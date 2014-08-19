@@ -83,15 +83,11 @@ $(function() {
         }
 
         function updateSecondary(node) {
-            $secondary.removeClass(classHidden)
-            $secondaryTitle.text(node.title)
-            $secondaryValue.text(node.value)
+            $secondary.removeClass(classHidden);
+            $secondaryTitle.text(node.title);
+            $secondaryValue.text(node.value);
         }
 
-        function updateTertiary(node) {
-
-        }
-        
         function update(d) {
             if (d.depth === 1) {
                 $secondary.addClass(classHidden);
@@ -99,10 +95,6 @@ $(function() {
             } else if (d.depth === 2) {
                 updatePrimary(d.parent);
                 updateSecondary(d);           
-            } else if (d.depth === 3 ) {
-                console.log(d.parent)
-                updatePrimary(d.parent.parent)
-                updateSecondary(d);
             }
         }
 
@@ -134,7 +126,7 @@ $(function() {
         function jsonRequestCB(error, json) {
             var key;
             if (!error) {
-                key = json.title + ".json"
+                key = json.title + ".json";
                 renderGraph(json, graphs[key]);
                 attachGraphEvents(graphs[key]);
                 Templates.renderSourcesPanel(graphs[key].$sources, json);                
@@ -183,7 +175,7 @@ $(function() {
                         .attr("height", height)
                         .append("g")
                         .attr("transform", svgCenter);
-                var $sources = $("[data-source='" + jsonPath + "']")
+                var $sources = $("[data-source='" + jsonPath + "']");
 
                 var graph = {
                     wrapper: element,
