@@ -1,4 +1,3 @@
-var nodepath = require('path');
 var gulp = require('gulp');
 var JSHintStylish = require('jshint-stylish');
 
