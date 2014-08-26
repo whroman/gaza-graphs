@@ -155,13 +155,14 @@ var D3Partitions = function() {
             .attr("d", D3Partitions.arc);
 
         // Load graph with one highlighted <path>
-        var data = d3.select("path.depth-2")[0][0].__data__;
+        var path = graph.wrapper.select("path.depth-2");
+        var data = path[0][0].__data__;
         events.onPathMouseover(data, graph);
     }
 
     function attachGraphEvents(graph) {
-        graph.paths.on("mouseover", function(d) {
-            events.onPathMouseover(d, graph);
+        graph.paths.on("mouseover", function(data) {
+            events.onPathMouseover(data, graph);
         });  
 
         return this;
