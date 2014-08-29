@@ -1,6 +1,6 @@
 # D3.js Partition Graphs of the 2014 Israeli-Gaza Conflict
 
-![Image of Palestinian Casualties](http://whroman.github.io/gaza-graphs/gaza-graphs.png)
+![Image of Palestinian Casualties](https://raw.githubusercontent.com/whroman/gaza-graphs/gh-pages/gaza-graphs.png)
 
 Technologies used:
 	
