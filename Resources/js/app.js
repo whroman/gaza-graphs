@@ -126,15 +126,6 @@ var D3Partitions = function() {
         .innerRadius(function(d) { return Math.sqrt(d.y); })
         .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
 
-    function jsonRequestCB(json) {
-        var key = json.title + ".json";
-        var graph = D3Partitions.graphs[key];
-        graph.json = json;
-        renderGraph(graph);
-        attachGraphEvents(graph);
-        Templates.renderSourcesPanel(graph.$sources, graph.json);
-    }
-
     function renderGraph(graph) {
         // Render <path> els
         graph.paths = graph.svg.datum(graph.json).selectAll("path")
@@ -168,6 +159,23 @@ var D3Partitions = function() {
         return this;
     }
 
+    function render(sel) {
+        var elements = $(sel),
+            i = 0,
+            elementsLen = elements.length;
+
+        for ( i; i < elementsLen; i++ ) {
+            var el = elements[i];
+            var graph = createGraphObject(el);
+
+            D3Partitions.graphs[graph.jsonPath] = graph;
+
+            $.getJSON(graph.jsonPath)
+            .success(jsonRequestCB);
+        }
+        return this;
+    }
+
     function createGraphObject(el) {
         var $el = $(el);
         var wrapper = d3.select(el);
@@ -192,21 +200,13 @@ var D3Partitions = function() {
         return graph;
     }
 
-    function render(sel) {
-        var elements = $(sel),
-            i = 0,
-            elementsLen = elements.length;
-
-        for ( i; i < elementsLen; i++ ) {
-            var el = elements[i];
-            var graph = createGraphObject(el);
-
-            D3Partitions.graphs[graph.jsonPath] = graph;
-
-            $.getJSON(graph.jsonPath)
-            .success(jsonRequestCB);
-        }
-        return this;
+    function jsonRequestCB(json) {
+        var key = this.url;
+        var graph = D3Partitions.graphs[key];
+        graph.json = json;
+        renderGraph(graph);
+        attachGraphEvents(graph);
+        Templates.renderSourcesPanel(graph.$sources, graph.json);
     }
 
     function getNodeAncestors(node, currentNode) {
