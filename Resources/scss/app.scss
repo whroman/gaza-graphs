@@ -1,8 +1,31 @@
 @import "vars";
+@import "mixins";
 @import "reset";
 @import "spacer";
 @import "svg";
 @import "text";
+
+#git {
+    position: fixed;
+    width: 90px;
+    height: 90px;
+    padding: 20px;
+    top: 20px;
+    right: 20px;
+    border-radius: 100%;
+    background-color: $gray;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 1.2em;
+    font-family: helvetica, arial, sans-serif;
+    text-align: center;
+    opacity: 0.4;
+}
+
+#git:hover {
+    opacity: 0.9;
+}
 
 .body-column-wrapper {
     display: inline-block;
@@ -20,20 +43,29 @@
     opacity: 0.3;
 }
 
-svg {
-    overflow: visible;
-    display: block;
-    margin: 0 auto;
+[d3-partition-graph] {
+    [info] {
+        position: absolute;
+        width: 300px;
+        margin-left: -150px;
+        left: 50%;
+        margin-top: 240px;
+        z-index: 1;
+    }
+
+    svg {
+        overflow: visible;
+        display: block;
+        margin: 0 auto;
+    }
+
+
+    path {
+        @include transition(opacity, 0.3s);
+    }
 }
 
-[info] {
-    position: absolute;
-    width: 300px;
-    margin-left: -150px;
-    left: 50%;
-    margin-top: 240px;
-    z-index: 1;
-}
+
 
 .hidden {
     display: none;
