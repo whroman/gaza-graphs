@@ -14,9 +14,6 @@ var Templates = {
 
         return html;
     },
-    renderSecondary: function(node) {
-        return html;
-    },
     renderSource: function(source) {
         var index = source.i + 1;
         var sourceRef = source.title + "-" + index; 
