@@ -4,11 +4,12 @@
 
 Technologies used:
 	
-	* [Sass](http://sass-lang.com/) - To make writing CSS not suck
-	* [Gulp](http://gulpjs.com/) - To automate tasks
-	* [Bower](http://bower.io) - To manage third-party libraries
-	* [D3.js](http://d3js.org/) - To handle Javascript graphing
-	* [JS-Lint](http://www.jslint.com/) - To ensure best practices in project's JS
+* [Sass](http://sass-lang.com/) - To make writing CSS not suck
+* [Gulp](http://gulpjs.com/) - To automate tasks
+* [Bower](http://bower.io) - To manage third-party libraries
+* [D3.js](http://d3js.org/) - To handle Javascript graphing
+* [JS-Lint](http://www.jslint.com/) - To ensure best practices in project's JS
+	
 ##Application
 
 ### Requirements
