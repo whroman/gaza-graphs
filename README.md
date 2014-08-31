@@ -17,12 +17,12 @@ To work on the front-end code of the application, you'll need to have the follow
 
 * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
 * [Gulp](http://gulpjs.com/): Run `[sudo] npm install -g gulp`
-* [Bower](http://bower.io) **: Run `[sudo] npm install -g bower`
+* [Bower](http://bower.io) *: Run `[sudo] npm install -g bower`
 * [Ruby](https://www.ruby-lang.org/en/installation/): Comes installed on Macs.
-* [Sass](http://sass-lang.com/install) *: Run `[sudo] gem install sass`. Version 3.3 or higher is required due to sourcemap support
+* [Sass](http://sass-lang.com/install) : Run `[sudo] gem install sass`. Version 3.3 or higher is required due to sourcemap support
 
 
-\** Only necessary if user wants to add third-party libraries/frameworks to project
+\* Only necessary if user wants to add third-party libraries/frameworks to project
 
 ### Structure
 
